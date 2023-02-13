@@ -12,10 +12,6 @@ class MenuController extends Controller
     public function index(Request $request){
         $user = Auth::user();
 
-//        if($user->role === 2){
-//            $permissionedItems = $user->operatorPermissions->toArray();
-//            $menu = Menu::whereIn('id', array_column($permissionedItems, 'menu_id'))->get();
-//        }
         switch ($user->role) {
             case 1:
                 $menu = Menu::all();
