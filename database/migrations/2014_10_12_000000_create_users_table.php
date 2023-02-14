@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('status')->default(0);
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('personal_id');
             $table->string('email')->unique();
+            $table->string('phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             //1 - ადმინისტრატორი

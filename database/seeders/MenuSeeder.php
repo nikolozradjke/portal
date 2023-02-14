@@ -17,76 +17,61 @@ class MenuSeeder extends Seeder
     {
         $items = [
             [
-                'title' => 'რუქა',
-                'route_prefix' => 'map'
+                'title' => 'რუქა'
             ],
             [
-                'title' => 'ანგარიშები',
-                'route_prefix' => 'accounts'
+                'title' => 'ანგარიშები'
             ],
             [
-                'title' => 'უწყებები',
-                'route_prefix' => 'agencies'
+                'title' => 'უწყებები'
             ],
             [
-                'title' => 'კალენდარი',
-                'route_prefix' => 'calendar'
+                'title' => 'კალენდარი'
             ],
             [
-                'title' => 'უწყების ბარათი',
-                'route_prefix' => 'agency-card'
+                'title' => 'უწყების ბარათი'
             ],
             [
-                'title' => 'ფილიალები/რეგიონალური ოფისები',
-                'route_prefix' => 'branches'
+                'title' => 'ფილიალები/რეგიონალური ოფისები'
             ],
             [
-                'title' => 'სერვისები',
-                'route_prefix' => 'services'
+                'title' => 'სერვისები'
             ],
             [
-                'title' => 'კადრები',
-                'route_prefix' => 'personnel'
+                'title' => 'კადრები'
             ],
             [
-                'title' => 'ბიუჯეტის სტრუქტურა',
-                'route_prefix' => 'budget-structure'
+                'title' => 'ბიუჯეტის სტრუქტურა'
             ],
             [
-                'title' => 'ბიუჯეტის ანგარიშგება',
-                'route_prefix' => 'budget-reporting'
+                'title' => 'ბიუჯეტის ანგარიშგება'
             ],
             [
-                'title' => 'ავტოპარკი',
-                'route_prefix' => 'autopark'
+                'title' => 'ავტოპარკი'
             ],
             [
-                'title' => 'ავტოპარკის ანგარიშგება',
-                'route_prefix' => 'autopark-reporting'
+                'title' => 'ავტოპარკის ანგარიშგება'
             ],
             [
-                'title' => 'შესყიდვები',
-                'route_prefix' => 'purchases'
+                'title' => 'შესყიდვები'
             ],
             [
-                'title' => 'მნიშვნელოვანი შესყიდვები',
-                'route_prefix' => 'important-purchases'
+                'title' => 'მნიშვნელოვანი შესყიდვები'
             ],
             [
-                'title' => 'ღონისძიებები',
-                'route_prefix' => 'events'
+                'title' => 'ღონისძიებები'
             ],
             [
-                'title' => 'ყოველკვირეული ანგარიშები',
-                'route_prefix' => 'weekly-reports'
+                'title' => 'ყოველკვირეული ანგარიშები'
             ],
             [
-                'title' => 'ცნობარი',
-                'route_prefix' => 'reference'
+                'title' => 'ცნობარი'
             ],
             [
-                'title' => 'მომხმარებლების მართვა',
-                'route_prefix' => 'manage-users'
+                'title' => 'მომხმარებლის პროფილი'
+            ],
+            [
+                'title' => 'მომხმარებლების მართვა'
             ],
         ];
 

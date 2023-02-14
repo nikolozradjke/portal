@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('icon')->nullable();
-            $table->string('component')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('agency_id')->after('role')->nullable();
+            $table->foreign('agency_id')->references('id')->on('agencies');
         });
     }
 
@@ -28,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('agency_id');
+        });
     }
 };

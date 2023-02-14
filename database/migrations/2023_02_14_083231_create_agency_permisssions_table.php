@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('operator_permissions', function (Blueprint $table) {
+        Schema::create('agency_permisssions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('menu_id');
+            $table->integer('agency_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('menu_id')->references('id')->on('menus');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operator_permissions');
+        Schema::dropIfExists('agency_permisssions');
     }
 };

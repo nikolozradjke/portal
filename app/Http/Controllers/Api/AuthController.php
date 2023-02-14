@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helper\UserMenu;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,30 +10,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function index(Request $request){
-        return response([
-            'yees'
-        ], 200);
-    }
-
-    public function register(Request $request){
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'personal_id' => $request->personal,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-
-        ]);
-
-        $token = $user->createToken('register_token')->plainTextToken;
-
-        return response()->json([
-            'desc' => 'Success',
-            'token' => $token
-        ], 200);
-    }
-
     public function login(Request $request){
         $user = User::where('email', $request->email)->first();
         if(!$user || !Hash::check($request->password, $user->password)){
@@ -43,8 +20,23 @@ class AuthController extends Controller
 
         $token = $user->createToken('login_token')->plainTextToken;
 
+        $menu = UserMenu::getMenu($user);
+        if($user->role != 4){
+            $agency = UserMenu::getAgencies($user->agency_id);
+        }else{
+            $agency = UserMenu::getAgencies($user->AgencyPermissions->toArray());
+        }
+
+
         return response()->json([
             'desc' => 'Success',
+            'user' => [
+                'name' => $user->first_name,
+                'lastname' =>  $user->last_name,
+                'role' => $user->role
+            ],
+            'menu' => $menu,
+            'agency' => $agency,
             'token' => $token
         ], 200);
     }
