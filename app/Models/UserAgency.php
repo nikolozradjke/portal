@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MenuPermission extends Model
+class UserAgency extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['user_id', 'menu_id'];
 }

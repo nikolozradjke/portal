@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('agency_id')->after('role')->nullable();
+        Schema::create('user_agencies', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('agency_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('agency_id')->references('id')->on('agencies');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('agency_id');
-        });
+        Schema::dropIfExists('user_agencies');
     }
 };
