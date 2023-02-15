@@ -19,11 +19,16 @@ use \App\Http\Controllers\Api\UserController;
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::group(['middleware' => ['auth:sanctum'],], function () {
+Route::group(['middleware' => ['auth:sanctum', 'permission'],], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/add-user', [UserController::class, 'store']);
 
-    Route::prefix('/statistics/{type}')->group(function () {
-        Route::get('/', [StatisticsController::class, 'get']);
+    Route::group(['middleware' => ['permission'],], function () {  
+        
+        // STATISTICS  
+        Route::prefix('/statistics/{type}')->group(function () {
+            Route::get('/', [StatisticsController::class, 'get']);
+        });        
     });
+    
 });

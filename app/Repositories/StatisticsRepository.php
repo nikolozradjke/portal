@@ -11,13 +11,6 @@ use App\Models\Statistics\StatisticsMobile;
 
 class StatisticsRepository 
 {
-    public $menu = 'statistics';
-
-    public function __construct() 
-    {
-        Permission::checkOrFail($this->menu);
-    }
-
     public function getStatistics($type)
     {
         $statisticsFunction = 'getStatistics'.Str::ucfirst($type);
