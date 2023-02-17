@@ -39,7 +39,8 @@ class AuthController extends Controller
             'menu' => $menu,
             'agency' => $agency,
             'token' => $token
-        ], 200);
+        ], 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
+        JSON_UNESCAPED_UNICODE);
     }
 
     public function logout(Request $request){
