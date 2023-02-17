@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\Permission;
+use App\Models\UserAgency;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -49,12 +52,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function AgencyPermissions(){
-        return $this->hasMany(AgencyPermisssion::class, 'user_id', 'id');
+    public function agencies(){
+        return $this->hasMany(UserAgency::class, 'user_id', 'id');
     }
 
-    public function menuPermissions(){
-        return $this->hasMany(MenuPermission::class, 'user_id', 'id');
+    public function menus(){
+        return $this->hasMany(Permission::class, 'user_id', 'id');
     }
 
     public static function store($data){
@@ -69,25 +72,26 @@ class User extends Authenticatable
             'role' => $data->role,
         ]);
 
-        $menuPermissions = [];
+        $permissions = [];
         if($data->menu){
             foreach($data->menu as $menu) {
-                $menuPermissions[] = [
+                $permissions[] = [
                     'user_id' => $user->id,
                     'menu_id' => $menu
                 ];
             }
-            MenuPermission::insert($menuPermissions);
+            Permission::insert($permissions);
         }
-        $agencyPermissions = [];
+
+        $agencies = [];
         if($data->agencies){
             foreach($data->agencies as $agency) {
-                $agencyPermissions[] = [
+                $permissions[] = [
                     'user_id' => $user->id,
                     'agency_id' => $agency
                 ];
             }
-            AgencyPermisssion::insert($agencyPermissions);
+            UserAgency::insert($agencies);
         }
 
         return true;
