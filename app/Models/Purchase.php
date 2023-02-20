@@ -5,26 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailedBudget extends Model
+class Purchase extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'agency_id',
-        'branch_id',
-        'details',
+        'agency_id ',
+        'volume',
+        'signed_contract',
+        'difference',
+        'tender_economic',
+        'done_job',
+        'contacts_resource',
+        'ratio_resource',
         'start_date',
-        'end_date',
-        'user_id'
+        'end_date'
     ];
 
     public function agency(){
         return $this->belongsTo(Agency::class, 'agency_id', 'id');
-    }
-
-    //to do branch relation
-
-    public function user(){
-        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
